@@ -36,7 +36,7 @@
                     <a class="nav-link active" href="#admin_panel">Admin</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/user">User</a>
+                    <a class="nav-link" href="http://localhost:8080/demo_war_exploded/user">User</a>
                 </li>
             </ul>
         </div>
@@ -94,35 +94,42 @@
                                             <div class="modal-body">
                                                 <div style="text-align: center;">
                                                     <div class="row justify-content-center align-items-center">
+                                                        <form id="editUserForm">
                                                         <form th:method="PATCH" th:action="@{/admin/{id}(id=${user.getId()})}"
                                                               th:object="${user}"
                                                               th:id="editForm + ${user.getId()}">
                                                             <div class="form-group text-center font-weight-bold">
-                                                                <label for="id0"><b>ID</b></label>
+                                                                <label for="editId"><b>ID</b></label>
                                                                 <input th:name="id" th:type="text" class="form-control"
-                                                                       id="id0" th:value="${user.id}" readonly="true"/>
+                                                                       id="editId" th:value="${user.id}" readonly="true"/>
                                                                 </label>
                                                                 <br>
-                                                                <label for="name0"><b>First name</b></label>
+                                                                <label for="editName"><b>First name</b></label>
                                                                 <input th:name="name" th:type="text"
-                                                                       class="form-control" id="name0"
+                                                                       class="form-control" id="editName"
                                                                        th:value="${user.name}"/>
                                                                 <br>
-                                                                <label for="surname0"><b>Last name</b></label>
+                                                                <label for="editLastname"><b>Last name</b></label>
                                                                 <input th:name="lastName" th:type="text"
-                                                                       class="form-control" id="surname0"
+                                                                       class="form-control" id="editLastname"
                                                                        th:value="${user.lastName}"/>
                                                                 <br>
-                                                                <label for="username"><b>Username</b></label>
+                                                                <label for="editUsername"><b>Username</b></label>
                                                                 <input th:name="username" th:type="text"
-                                                                       class="form-control" id="username"
+                                                                       class="form-control" id="editUsername"
                                                                        th:value="${user.username}"/>
                                                                 </label>
                                                                 <br>
-                                                                <label for="password0"><b>Password</b></label>
+                                                                <label for="editPassword"><b>Password</b></label>
                                                                 <input th:name="password" th:type="password"
-                                                                       class="form-control" id="password0"
-                                                                />
+                                                                       class="form-control" id="editPassword"
+                                                                       th:value="${user.password}"/>
+                                                                </label>
+                                                                <br>
+                                                                <label for="editEmail"><b>Password</b></label>
+                                                                <input th:name="email" th:type="email"
+                                                                       class="form-control" id="editEmail"
+                                                                       th:value="${user.password}"/>
                                                                 </label>
                                                                 <label>Role
                                                                     <select class="form-control form-control-sm"
@@ -131,6 +138,7 @@
                                                                     </select>
                                                                 </label>
                                                             </div>
+                                                        </form>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -166,6 +174,7 @@
                                             <div class="modal-body">
                                                 <div style="text-align: center;">
                                                     <div class="row justify-content-center align-items-center">
+                                                        <form id="deleteUserForm">
                                                         <form th:method="DELETE"
                                                               th:action="@{/admin/{id}(id=${user.getId()})}"
                                                               th:object="${user}"
@@ -188,7 +197,7 @@
                                                                 <label for="Email1"><b>E-mail</b></label>
                                                                 <input th:name="email" th:type="text"
                                                                        class="form-control" id="Email1"
-                                                                       th:value="${user.username}" disabled/>
+                                                                       th:value="${user.email}" disabled/>
                                                                 <br>
                                                                 <label for="username2"><b>E-mail</b></label>
                                                                 <input th:name="username2" th:type="text"
@@ -202,6 +211,7 @@
                                                                     </select>
                                                                 </label>
                                                             </div>
+                                                        </form>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -231,25 +241,31 @@
                                     <label>First name
                                         <input type="text"
                                                class="form-control form-control-sm"
-                                               id="name" name="name">
+                                               id="newName" name="name">
                                     </label>
                                     <br>
                                     <label>Last name
                                         <input type="text"
                                                class="form-control form-control-sm"
-                                               id="lastname" name="lastname">
+                                               id="newLastname" name="lastname">
                                     </label>
                                     <br>
                                     <label>Email
                                         <input type="email"
                                                class="form-control form-control-sm"
-                                               id="email" name="email">
+                                               id="newEmail" name="email">
+                                    </label>
+                                    <br>
+                                    <label>Username
+                                        <input type="username1"
+                                               class="form-control form-control-sm"
+                                               id="newUsername" name="username">
                                     </label>
                                     <br>
                                     <label>Password
                                         <input type="password"
                                                class="form-control form-control-sm"
-                                               id="password" name="password">
+                                               id="newPassword" name="password">
                                     </label>
                                     <br>
                                     <label>Role
